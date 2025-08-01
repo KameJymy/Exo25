@@ -3,5 +3,7 @@ module.exports={
     inputs :"//form[@id='login-form']//label/input",
     id :"id",
     role :"select[id='role']",
-    connect :"button[type='button']"
+    connect :"button[type='button']",
+    msg_employe :"//div[@id='employe-tools']/p",
+    deco :"button[id='deco2']"
 };
