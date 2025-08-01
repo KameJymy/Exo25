@@ -43,7 +43,8 @@ async function fillForm(session)
             return element && window.getComputedStyle(element).display !== "none" ? true : null
         ;},[], 3000));
 
-        console.log("Chargement réussi de la page");
+    const msg = await session.findByXpath("//div[@id='employe-tools']/p");
+    console.log(await msg.getVisibleText());
 }
 
 module.exports = fillForm;
