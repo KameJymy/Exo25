@@ -7,7 +7,7 @@ const fillForm = require("./fillForm");
 
     try
     {
-
+        await fillForm(session);
     }
     catch(err)
     {
@@ -15,6 +15,6 @@ const fillForm = require("./fillForm");
     }
     finally
     {
-        await session.quit();
+        //await session.quit();
     }
 })();
