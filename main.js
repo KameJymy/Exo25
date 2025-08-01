@@ -7,7 +7,7 @@ const fillForm = require("./fillForm");
 
     try
     {
-
+        await fillForm(session);
     }
     catch(err)
     {
