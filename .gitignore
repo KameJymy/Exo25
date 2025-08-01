@@ -1,0 +1,38 @@
+# Node.js dependencies
+node_modules/
+
+# Logs
+*.log
+
+# OS-specific files
+.DS_Store
+Thumbs.db
+
+# IDE/editor settings
+.vscode/
+.idea/
+
+# Env files (si jamais tu en ajoutes)
+.env
+
+# Build ou fichiers temporaires
+dist/
+build/
+temp/
+*.tmp
+
+# Screenshots / captures éventuelles
+screenshots/
+*.png
+
+# Rapport HTML / tests
+*.html
+coverage/
+
+# Fichiers générés par des outils de test
+*.xml
+*.json
+*.csv
+
+# fichiers de debug locaux
+debug.log
