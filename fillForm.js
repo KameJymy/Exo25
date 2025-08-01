@@ -1,4 +1,6 @@
 const selectors = require("./selectors");
+const Command =require('leadfoot/Command');
+const pollUntil = require('leadfoot/helpers/pollUntil');
 
 async function fillForm(session)
 {
@@ -20,9 +22,28 @@ async function fillForm(session)
         }
     }
 
-    const role = findByCssSelector(selectors.role);
-    
+    const role = await session.findByCssSelector(selectors.role);
+    const options = await session.findAllByTagName("option");
+    for (let option of options)
+    {
+        const value = await option.getAttribute("value");
+        if (value==="employe")
+        {
+            await option.click();
+            console.log("Employé selectionné");
+            break;
+        }
+    }
+    const connexion = await session.findByCssSelector(selectors.connect);
+    await connexion.click();
 
+    await new Command(session)
+        .then(pollUntil(function(){
+            const element = document.querySelector("#welcome");
+            return element && window.getComputedStyle(element).display !== "none" ? true : null
+        ;},[], 3000));
+
+        console.log("Chargement réussi de la page");
 }
 
 module.exports = fillForm;
