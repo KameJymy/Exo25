@@ -5,5 +5,6 @@ module.exports={
     role :"select[id='role']",
     connect :"button[type='button']",
     msg_employe :"//div[@id='employe-tools']/p",
-    deco :"button[id='deco2']"
+    deco :"button[id='deco2']",
+    msg2:"//div[@id ='manager-tools']/p"
 };

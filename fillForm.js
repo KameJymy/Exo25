@@ -8,7 +8,19 @@ async function fillForm(session)
 
     const inputs = await session.findAllByXpath(selectors.inputs);
 
-    await fill(inputs);
+    const champ ={
+        identifiant :"Jean",
+        password :"cool1234",
+    };
+    for (let input of inputs)
+    {
+        const id = await input.getAttribute(selectors.id);
+        if (champ[id])
+        {
+            await input.type(champ[id]);
+            console.log(id +" : "+champ[id]);
+        }
+    }
 
     const role = await session.findByCssSelector(selectors.role);
     const options = await role.findAllByTagName("option");
@@ -34,9 +46,21 @@ async function fillForm(session)
     await deco.click();
 
     await chargement("#identifiant", session);
-    
+
     const inputss = await session.findAllByXpath(selectors.inputs);
-    await fill(inputss);
+    const champ2 ={
+        identifiant :"Jean",
+        password :"texts12345",
+    };
+    for (let input of inputss)
+    {
+        const id = await input.getAttribute(selectors.id);
+        if (champ2[id])
+        {
+            await input.type(champ2[id]);
+            console.log(id +" : "+champ2[id]);
+        }
+    }
 
     const role2 = await session.findByCssSelector(selectors.role);
     const options2 = await role2.findAllByTagName("option");
@@ -54,26 +78,12 @@ async function fillForm(session)
     await connexion2.click();
 
     
-
-    
+    const msg2 = await session.findByXpath(selectors.msg2);
+    console.log(await msg2.getVisibleText());
+     
 }
 
-async function fill(a)
-{
-    const champ ={
-        identifiant :"Jean",
-        password :"1234",
-    };
-    for (let input of a)
-    {
-        const id = await input.getAttribute(selectors.id);
-        if (champ[id])
-        {
-            await input.type(champ[id]);
-            console.log(id +" : "+champ[id]);
-        }
-    }
-}
+
 
 async function chargement(a, session) {
     await new Command(session)
